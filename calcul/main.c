@@ -49,6 +49,7 @@ int main(int argc, char *argv[])
   return 0;
 }
 */
+/*
 int main()
 {
     int valeur1 = 15;
@@ -59,3 +60,32 @@ int main()
     printf("%d \n", resultat);
     return 0;
 }
+*/
+#include <stdio.h>
+
+int main()
+{
+    int nombre = 7;
+
+    nombre += 4; // nombre vaut 5 (1 + 4)
+
+    printf("%d \n", nombre); // Affiche 5
+
+    nombre -= 3; // ...
+
+    printf("%d \n", nombre); // Affiche 8
+
+    nombre /= 3; // ...
+
+    printf("%d \n", nombre); // Affiche 2
+
+    nombre %= 2; // ...
+
+    printf("%1f \n", nombre); // Affiche 2
+
+}
+
+
+
+
+
