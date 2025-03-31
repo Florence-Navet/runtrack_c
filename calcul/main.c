@@ -81,7 +81,7 @@ int main()
 
     nombre %= 2; // ...
 
-    printf("%1f \n", nombre); // Affiche 2
+    printf("%1f \n", nombre); // Affiche 0.0000
 
 }
 
