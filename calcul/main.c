@@ -39,11 +39,11 @@ int main(int argc, char *argv[])
 
   // On fait le calcul :
 
-  resultat = nombre1 / nombre2;
+  resultat = nombre1 * nombre2;
 
   // Et on affiche l'addition à l'écran :
 
-  printf ("%d / %d = %d\n", nombre1, nombre2, resultat);
+  printf ("%d * %d = %d\n", nombre1, nombre2, resultat);
 
   return 0;
 }
