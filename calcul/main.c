@@ -24,6 +24,7 @@ int main(int argc, char *argv[])
 }
 */
 
+/*
 //faire une soustration
 
 int main(int argc, char *argv[])
@@ -46,4 +47,15 @@ int main(int argc, char *argv[])
   printf ("%d * %d = %d\n", nombre1, nombre2, resultat);
 
   return 0;
+}
+*/
+int main()
+{
+    int valeur1 = 15;
+    int valeur2 = 5;
+    int resultat;
+    resultat = valeur1 * valeur2;
+
+    printf("%d \n", resultat);
+    return 0;
 }
