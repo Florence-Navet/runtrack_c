@@ -31,7 +31,7 @@ int main() {
 */   
 #include <stdio.h>
 int main() {
-    for (int compteur = 0; compteur <= 10; compteur++)
+    for (int compteur = 0; compteur <= 10; compteur+=2)
     {
         printf("%d\n", compteur);
     }
