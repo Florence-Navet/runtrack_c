@@ -1,4 +1,5 @@
-/// boucle do while
+/* boucle do while verifie quand meme une seule fois la condition 
+ contrairement à la boucle while */
 
 #include <stdio.h>
 
