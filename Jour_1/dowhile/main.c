@@ -29,6 +29,8 @@ int main() {
 
 }
 */   
+//de deux en deux
+/*
 #include <stdio.h>
 int main() {
     for (int compteur = 0; compteur <= 10; compteur+=2)
@@ -38,5 +40,15 @@ int main() {
     return 0;
 
 }
+*/
+//decompe de 10 à 0
+#include <stdio.h>
+int main() {
+    for (int compteur = 10; compteur >= 0; compteur--)
+    {
+        printf("%d\n", compteur);
+    }
+    return 0;
 
+}
 
