@@ -1,8 +1,10 @@
 /* boucle do while verifie quand meme une seule fois la condition 
  contrairement à la boucle while */
 
-#include <stdio.h>
+ /*boucle for*/
 
+
+/*
 int main(){
     int compteur = 10; 
 
@@ -14,6 +16,27 @@ int main(){
 
     return 0;
 }
+*/
+/*
+int main() {
+    int compteur = 0;
+    while(compteur <=10)
+    {
+        printf("%d\n", compteur);
+        compteur++;
+    }
+    return 0;
 
-    
+}
+*/   
+#include <stdio.h>
+int main() {
+    for (int compteur = 0; compteur <= 10; compteur++)
+    {
+        printf("%d\n", compteur);
+    }
+    return 0;
+
+}
+
 
