@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 int main(int argc, const char * argv[]) {
-    int age = 10;
+    int age = 15;
 
     printf("La valeur de la variable est %d\n", age);
     printf("L'adresse de la variable est: %p\n", &age);
