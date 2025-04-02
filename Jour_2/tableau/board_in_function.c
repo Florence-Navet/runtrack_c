@@ -1,4 +1,5 @@
 //tableau de float
+//tab premiere case du tableau du pointeur
 
 #include <stdio.h>
 void nombresPairs (int*tab, int taille)
@@ -10,6 +11,8 @@ void nombresPairs (int*tab, int taille)
             printf("Le nombre %d est pair:\n", tab[i]);
         }
     }
+
+    
 
 }
 
