@@ -1,0 +1,4 @@
+Ceci est un texte d'exemple dans le fichier.
+Cela permettra de tester les déplacements du curseur et la lecture.
+
+Ajouté à la fin du fichier.
