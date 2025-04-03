@@ -1,0 +1,2 @@
+Bonjour, ceci est un exemple de fichier.
+Nous allons tester la fonction rewind.
