@@ -1,8 +1,11 @@
 #include <stdio.h>
 #include "main.h"  // Inclure le fichier d'en-tête contenant def structure
 
+//creation d'un alias
+typedef struct Personne Personne;
+
 // Fonction qui affiche les infos de la personne
-void afficher_personne(struct Personne p) {
+void afficher_personne(Personne p) {
     printf("\nInformations sur la personne:\n");
     printf("Nom: %s", p.nom);
     printf("Prénom: %s", p.prenom);
@@ -12,7 +15,7 @@ void afficher_personne(struct Personne p) {
 }
 
 int main() {
-    struct Personne personne1;
+    Personne personne1;
 
     //Saisie infos
     printf("Entrez le nom: ");
