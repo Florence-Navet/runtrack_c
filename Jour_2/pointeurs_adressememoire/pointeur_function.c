@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 
+
 void triple(int *nombre)
 {
     *nombre *= 3; //valeur se trouvant dant le pointeur
