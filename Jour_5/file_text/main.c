@@ -24,8 +24,6 @@ Fonctions autorisées : open, close, read, write, malloc, free.
 typedef struct Anime Anime;
 /*
 //creation d'un alias
-
-
 // Fonction qui affiche les infos de la personne
 void afficher_anime(Anime a) {
     printf("\nInformations sur l'anime:\n");
@@ -33,7 +31,6 @@ void afficher_anime(Anime a) {
     printf("Titre: %s", a.titre);
     printf("Année: %s", a.annee);
 }
-
 */
 // Définition de la structure Anime
 // struct Anime {
@@ -42,27 +39,21 @@ void afficher_anime(Anime a) {
 //     int annee; 
 // }; 
 
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-#include "manager_file.c" // 
-
-typedef struct Anime Anime;
-
+#define MAX_ANIME 100
 int main() {
 
     // Création d'un anime
-    Anime x = {
-        "Anya",
-        "SpyXFamily",
-        2025
-    };
+    // Anime x = {
+    //     "Anya",
+    //     "SpyXFamily",
+    //     2025
+    // };
 
-    afficher_anime(x);
+    // afficher_anime(x);
 
-    Anime monAnime;
+    Anime tableauAnime[MAX_ANIME]; // tableau de 100 anime max
+    int nbAnime = 0;
+    
     // Lecture du fichier existant
     FILE *fichier = fopen("manga.txt", "r");
     if (fichier == NULL) {
@@ -71,32 +62,49 @@ int main() {
     }
 
     char ligne[256];  // Pour stocker chaque ligne lue
-    char *nom ;
-    char *titre ;
+    char *nom;
+    char *titre;
     char *annee_str;
     int annee_int;
+
     printf("\nContenu actuel du fichier :\n");
-    while (fgets(ligne, sizeof(ligne), fichier)) {
-        printf("%s", ligne);
+
+    while (fgets(ligne, sizeof(ligne), fichier) && nbAnime < MAX_ANIME) {
+        ligne[strcspn(ligne, "\n")] = '\0'; // supprime le retour à la ligne
+    
         nom = strtok(ligne, ",");
         titre = strtok(NULL, ",");
         annee_str = strtok(NULL, ",");
-        annee_int = atoi(annee_str);
-        
-        // Remplir la structure
-        strcpy(monAnime.nom, nom);
-        strcpy(monAnime.titre, titre);
-        monAnime.annee = annee_int;
-        printf("Mon nom est %s, je suis dans l anime %s qui date de %d\n", monAnime.nom, monAnime.titre,monAnime.annee);
-        //devoir faire un tableau de structure anime tab[struct Anime]
+    
+        if (nom && titre && annee_str) {
+            while (*titre == ' ') titre++;
+            while (*annee_str == ' ') annee_str++;
+    
+            annee_int = atoi(annee_str);
+    
+            strcpy(tableauAnime[nbAnime].nom, nom);
+            strcpy(tableauAnime[nbAnime].titre, titre);
+            tableauAnime[nbAnime].annee = annee_int;
+    
+            nbAnime++;
+        }
     }
+    
+    // devoir faire un tableau de structure anime tab[struct Anime]
     fclose(fichier);
 
-    //tableau d anime remplit je le tri
+    // Affichage du tableau
+    printf("\nListe des animes dans le tableau :\n");
+    for (int i = 0; i < nbAnime; i++) {
+        printf("\"%s\" by \"%s\" released in %d.\n",
+            tableauAnime[i].titre,
+            tableauAnime[i].nom,
+            tableauAnime[i].annee);
+    }
 
-    enregistrer_anime("save_manga.txt", x);
-    
-
+    // Anime x = {"Anya", "SpyXFamily", 2025}; // Exemple d'anime à enregistrer
+    enregistrer_anime("save_manga.txt", tableauAnime[1]);
+    //enregistrer_anime("save_manga.txt", 10);
     printf("\nAnime ajouté au fichier avec succès !\n");
 
     return 0;
