@@ -16,8 +16,11 @@ Fonctions autorisées : open, close, read, write, malloc, free.
 */
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 //#include "main.h"
-#include "manager_file.c"
+#include "manager_file.h"
 typedef struct Anime Anime;
 /*
 //creation d'un alias
@@ -39,32 +42,62 @@ void afficher_anime(Anime a) {
 //     int annee; 
 // }; 
 
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include "manager_file.c" // 
+
+typedef struct Anime Anime;
+
 int main() {
 
-    Anime x ={
+    // Création d'un anime
+    Anime x = {
         "Anya",
-        "spyXFamilly",
+        "SpyXFamily",
         2025
-    } ;
+    };
 
     afficher_anime(x);
-    FILE *fichier = fopen("manga.txt", "r+");
 
+    Anime monAnime;
+    // Lecture du fichier existant
+    FILE *fichier = fopen("manga.txt", "r");
     if (fichier == NULL) {
-        
         printf("Erreur lors de l'ouverture du fichier.\n");
         return 1; 
     }
 
-    // Si le fichier est ouvert avec succès, on le lit ligne par ligne
-    char ligne[256];  // Tableau pour stocker chaque ligne lue
+    char ligne[256];  // Pour stocker chaque ligne lue
+    char *nom ;
+    char *titre ;
+    char *annee_str;
+    int annee_int;
+    printf("\nContenu actuel du fichier :\n");
     while (fgets(ligne, sizeof(ligne), fichier)) {
-    
         printf("%s", ligne);
+        nom = strtok(ligne, ",");
+        titre = strtok(NULL, ",");
+        annee_str = strtok(NULL, ",");
+        annee_int = atoi(annee_str);
+        
+        // Remplir la structure
+        strcpy(monAnime.nom, nom);
+        strcpy(monAnime.titre, titre);
+        monAnime.annee = annee_int;
+        printf("Mon nom est %s, je suis dans l anime %s qui date de %d\n", monAnime.nom, monAnime.titre,monAnime.annee);
+        //devoir faire un tableau de structure anime tab[struct Anime]
     }
-
-
     fclose(fichier);
+
+    //tableau d anime remplit je le tri
+
+    enregistrer_anime("save_manga.txt", x);
+    
+
+    printf("\nAnime ajouté au fichier avec succès !\n");
 
     return 0;
 }

@@ -11,4 +11,8 @@ struct Anime {
 // Déclaration de la fonction d'affichage
 void afficher_anime(struct Anime a);
 
+void enregistrer_anime(char *mon_file, struct Anime a);
+
+
 #endif
+

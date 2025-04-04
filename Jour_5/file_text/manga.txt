@@ -1,6 +1,7 @@
-Anya, SpyXFamily, 2022
-Shadow, The Eminence in Shadow, 2022
-Eren Yeager, Attack on Titan, 2022
-Kanna Kamui, Miss Kobayashi's Dragon Maid, 2015
-Megumin, Konosuba, 2016
-Sunghoon, Solo Leveling, 2018
+Anya,SpyXFamily,2022
+Shadow,The Eminence in Shadow,2022
+Eren Yeager,Attack on Titan,2022
+Kanna Kamui,Miss Kobayashi's Dragon Maid,2015
+Megumin,Konosuba,2016
+Sunghoon,Solo Leveling,2018
+Anya,SpyXFamily,618656584

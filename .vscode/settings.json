@@ -5,6 +5,7 @@
         "*.dbclient-js": "javascript",
         "stdio.h": "c",
         "main.C": "cpp",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "manager_file.c": "cpp"
     }
 }
