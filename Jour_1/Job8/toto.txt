@@ -1,0 +1,99 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+
+// Fonction split : sépare une chaîne de caractères en mots et les stocke dans un tableau
+char **split(const char *chaine) {
+    if (chaine == NULL) {
+        return NULL; // Si la chaîne est NULL, retourner NULL
+    }
+
+    // Compter le nombre de mots dans la chaîne
+    int count = 0;
+    const char *temp = chaine;
+    while (*temp) {
+        // Ignore les espaces, tabulations et retours à la ligne
+        while (*temp && isspace((unsigned char)*temp)) {
+            temp++;
+        }
+        // Si on trouve un mot, on le compte
+        if (*temp) {
+            count++;
+            // Passer au mot suivant
+            while (*temp && !isspace((unsigned char)*temp)) {
+                temp++;
+            }
+        }
+    }
+
+    // Allouer le tableau pour stocker les pointeurs vers les mots
+    char **result = (char **)malloc((count + 1) * sizeof(char *));
+    if (result == NULL) {
+        return NULL; // Si l'allocation échoue, retourner NULL
+    }
+
+    // Copier les mots dans le tableau
+    int index = 0;
+    temp = chaine;
+    while (*temp) {
+        // Ignore les espaces, tabulations et retours à la ligne
+        while (*temp && isspace((unsigned char)*temp)) {
+            temp++;
+        }
+        // Si un mot est trouvé
+        if (*temp) {
+            // Trouver la fin du mot
+            const char *word_start = temp;
+            while (*temp && !isspace((unsigned char)*temp)) {
+                temp++;
+            }
+
+            // Allouer la mémoire pour le mot
+            int word_len = temp - word_start;
+            result[index] = (char *)malloc(word_len + 1); // +1 pour le '\0'
+            if (result[index] == NULL) {
+                // Si l'allocation échoue, libérer la mémoire allouée et retourner NULL
+                for (int i = 0; i < index; i++) {
+                    free(result[i]);
+                }
+                free(result);
+                return NULL;
+            }
+
+            // Copier le mot dans le tableau
+            strncpy(result[index], word_start, word_len);
+            result[index][word_len] = '\0'; // Ajouter le caractère nul
+
+            index++;
+        }
+    }
+
+    result[index] = NULL; // Terminer le tableau par un pointeur NULL
+
+    return result;
+}
+
+// Test de la fonction split
+int main() {
+    const char *test_str = "  hello    world   have fun  ";
+
+    // Appel à la fonction split
+    char **result = split(test_str);
+
+    // Vérifier le résultat
+    if (result != NULL) {
+        // Afficher les mots
+        for (int i = 0; result[i] != NULL; i++) {
+            printf("Mot %d: \"%s\"\n", i + 1, result[i]);
+            free(result[i]); // Libérer la mémoire allouée pour chaque mot
+        }
+
+        // Libérer la mémoire du tableau
+        free(result);
+    } else {
+        printf("Erreur d'allocation mémoire.\n");
+    }
+
+    return 0;
+}
