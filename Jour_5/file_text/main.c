@@ -1,59 +1,43 @@
-/*
-Vous devez créer un programme qui prend en arguments le nom d’un fichier texte, et “artist”, “title”, ou “year”.
-
-Le programme devra ouvrir le fichier texte, le lire, l’interpréter et l’enregistrer
-en liste chaînée. Il devra ensuite le trier selon l’ordre indiqué dans le deuxième
-argument, afficher toute la liste sur la sortie standard au même format que
-dans le Jour04.
-
-Le fichier texte sera présenté au format suivant :
-Iron Maiden,The Number of the Beast,1982
-Black Sabbath,Paranoid,1970
-Iron Maiden,Fear of the Dark,1992
-Rappel du format de sortie :
-“Master of Puppets” by “Metallica” released in 1986.
-Fonctions autorisées : open, close, read, write, malloc, free.
-*/
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-//#include "main.h"
-#include "manager_file.h"
-typedef struct Anime Anime;
-/*
-//creation d'un alias
-// Fonction qui affiche les infos de la personne
-void afficher_anime(Anime a) {
-    printf("\nInformations sur l'anime:\n");
-    printf("Nom: %s", a.nom);
-    printf("Titre: %s", a.titre);
-    printf("Année: %s", a.annee);
-}
-*/
-// Définition de la structure Anime
-// struct Anime {
-//     char nom[100];
-//     char titre[100];
-//     int annee; 
-// }; 
+#include "manager_file.h"  // Inclure le fichier d'en-tête uniquement
 
 #define MAX_ANIME 100
+
+// Fonction de comparaison par titre
+int compare_par_titre(const void *a, const void *b) {
+    struct Anime *animeA = (struct Anime *)a;
+    struct Anime *animeB = (struct Anime *)b;
+    return strcmp(animeA->titre, animeB->titre);
+}
+
+// Fonction de comparaison par nom
+int compare_par_nom(const void *a, const void *b) {
+    struct Anime *animeA = (struct Anime *)a;
+    struct Anime *animeB = (struct Anime *)b;
+    return strcmp(animeA->nom, animeB->nom);
+}
+
+// Fonction de comparaison par année
+int compare_par_annee(const void *a, const void *b) {
+    struct Anime *animeA = (struct Anime *)a;
+    struct Anime *animeB = (struct Anime *)b;
+    return animeA->annee - animeB->annee;
+}
+
+// Fonction d'affichage des animes
+void affichage_animes(struct Anime *animes, int n) {
+    for (int i = 0; i < n; i++) {
+        printf("\"%s\" by \"%s\" released in %d.\n",
+               animes[i].titre, animes[i].nom, animes[i].annee);
+    }
+}
+
 int main() {
-
-    // Création d'un anime
-    // Anime x = {
-    //     "Anya",
-    //     "SpyXFamily",
-    //     2025
-    // };
-
-    // afficher_anime(x);
-
-    Anime tableauAnime[MAX_ANIME]; // tableau de 100 anime max
+    struct Anime tableauAnime[MAX_ANIME]; // tableau de 100 anime max
     int nbAnime = 0;
-    
+
     // Lecture du fichier existant
     FILE *fichier = fopen("manga.txt", "r");
     if (fichier == NULL) {
@@ -62,49 +46,50 @@ int main() {
     }
 
     char ligne[256];  // Pour stocker chaque ligne lue
-    char *nom;
-    char *titre;
-    char *annee_str;
+    char *nom, *titre, *annee_str;
     int annee_int;
 
     printf("\nContenu actuel du fichier :\n");
 
+    // Lecture ligne par ligne du fichier
     while (fgets(ligne, sizeof(ligne), fichier) && nbAnime < MAX_ANIME) {
-        ligne[strcspn(ligne, "\n")] = '\0'; // supprime le retour à la ligne
-    
+        ligne[strcspn(ligne, "\n")] = '\0'; // Supprimer le retour à la ligne
+
         nom = strtok(ligne, ",");
         titre = strtok(NULL, ",");
         annee_str = strtok(NULL, ",");
-    
+
         if (nom && titre && annee_str) {
+            // Supprimer les espaces au début et à la fin des chaînes
             while (*titre == ' ') titre++;
             while (*annee_str == ' ') annee_str++;
-    
+
             annee_int = atoi(annee_str);
-    
+
+            // Remplir le tableau d'animes
             strcpy(tableauAnime[nbAnime].nom, nom);
             strcpy(tableauAnime[nbAnime].titre, titre);
             tableauAnime[nbAnime].annee = annee_int;
-    
+
             nbAnime++;
         }
     }
-    
-    // devoir faire un tableau de structure anime tab[struct Anime]
+
     fclose(fichier);
 
-    // Affichage du tableau
-    printf("\nListe des animes dans le tableau :\n");
-    for (int i = 0; i < nbAnime; i++) {
-        printf("\"%s\" by \"%s\" released in %d.\n",
-            tableauAnime[i].titre,
-            tableauAnime[i].nom,
-            tableauAnime[i].annee);
-    }
+    // Affichage avant le tri
+    printf("Before sorting:\n");
+    affichage_animes(tableauAnime, nbAnime);
 
-    // Anime x = {"Anya", "SpyXFamily", 2025}; // Exemple d'anime à enregistrer
+    // Tri par titre
+    qsort(tableauAnime, nbAnime, sizeof(struct Anime), compare_par_titre);
+
+    // Affichage après le tri
+    printf("\nAfter sorting by title:\n");
+    affichage_animes(tableauAnime, nbAnime);
+
+    // Exemple d'anime à enregistrer
     enregistrer_anime("save_manga.txt", tableauAnime[1]);
-    //enregistrer_anime("save_manga.txt", 10);
     printf("\nAnime ajouté au fichier avec succès !\n");
 
     return 0;

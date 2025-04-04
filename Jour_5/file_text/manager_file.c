@@ -1,10 +1,11 @@
 #include <stdio.h>
+#include <string.h>
 #include "manager_file.h"
 
-//creation d'un alias
+//création d'un alias
 typedef struct Anime Anime;
 
-// Fonction qui affiche les infos de la personne
+// Fonction qui affiche les infos de l'anime
 void afficher_anime(struct Anime a) {
     printf("\nInformations sur l'anime:\n");
     printf("Nom: %s\n", a.nom);
@@ -12,7 +13,7 @@ void afficher_anime(struct Anime a) {
     printf("Année: %d\n", a.annee);
 }
 
-
+// Fonction pour enregistrer un anime dans un fichier
 void enregistrer_anime(char *mon_file, struct Anime a) {
     // On ouvre le fichier en mode append (ajout à la fin)
     FILE *fichier_append = fopen(mon_file, "a");
