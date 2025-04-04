@@ -51,8 +51,9 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-# Ignorer le fichier toto.c
+# Ignorer le fichier toto.c et test.c
 *toto.c
+*test.c
 
 
 

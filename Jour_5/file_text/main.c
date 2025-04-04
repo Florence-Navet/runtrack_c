@@ -16,9 +16,38 @@ Fonctions autorisées : open, close, read, write, malloc, free.
 */
 
 #include <stdio.h>
+//#include "main.h"
+#include "manager_file.c"
+typedef struct Anime Anime;
+/*
+//creation d'un alias
+
+
+// Fonction qui affiche les infos de la personne
+void afficher_anime(Anime a) {
+    printf("\nInformations sur l'anime:\n");
+    printf("Nom: %s", a.nom);
+    printf("Titre: %s", a.titre);
+    printf("Année: %s", a.annee);
+}
+
+*/
+// Définition de la structure Anime
+// struct Anime {
+//     char nom[100];
+//     char titre[100];
+//     int annee; 
+// }; 
 
 int main() {
-   
+
+    Anime x ={
+        "Anya",
+        "spyXFamilly",
+        2025
+    } ;
+
+    afficher_anime(x);
     FILE *fichier = fopen("manga.txt", "r+");
 
     if (fichier == NULL) {

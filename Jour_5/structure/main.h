@@ -2,7 +2,7 @@
 #define MAIN_H
 
 // Définition de la structure Personne
- struct Personne  {
+struct Personne  {
     char nom[100];
     char prenom[100];
     char adresse[100];
