@@ -6,6 +6,7 @@
         "stdio.h": "c",
         "main.C": "cpp",
         "stdlib.h": "c",
-        "manager_file.c": "cpp"
+        "manager_file.c": "cpp",
+        "array_clone.C": "cpp"
     }
 }
