@@ -29,6 +29,19 @@ gcc test.c -o coco
 
 3. Création d'un Makefile
 
+```bash
+
+https://gnuwin32.sourceforge.net/packages.html
+
+```
+
+allez sur le setup
+
+```bash
+https://sourceforge.net/projects/gnuwin32/
+
+```
+
 **pour compiler :**
 
 ```bash
