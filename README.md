@@ -27,6 +27,21 @@ A installer sur son pc
 gcc test.c -o coco
 ```
 
+3. Création d'un Makefile
+
+**pour compiler :**
+
+```bash
+make
+```
+
+**pour nettoyer les fichier générés :**
+
+```bash
+make clean
+
+```
+
 ## verification encodage UTF8
 
 **pour mettre encodage UTF8**
