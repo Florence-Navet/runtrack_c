@@ -64,3 +64,21 @@ Taper cela dans le terminal
 ## Contributeur
 
 - [Florence Navet](https://github.com/florence-navet)
+
+Dans powershel faire :
+
+Aller dans powershell
+
+- PS C:\WINDOWS\system32> cd $HOME\Desktop  
+  PS C:\Users\TonNom\Desktop>
+
+- pacman -Syu
+- pacman -S make
+- pacman -S gcc
+
+Aller dans les variables d'envirronement :  
+Ajouter : C:\msys64\usr\bin
+
+Arrêter powershell et vscode pour les redemarrer :  
+faire :  
+make --version
