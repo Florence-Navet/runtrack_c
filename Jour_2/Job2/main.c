@@ -1,7 +1,3 @@
-/*
-Vous devez implémenter la fonction swap (dans un fichier swap.c) qui prend
-en paramètres deux pointeurs sur int, et qui doit échanger leurs valeurs.
-*/
 #include <stdio.h>
 #include "swap.h"
 

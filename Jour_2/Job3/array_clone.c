@@ -7,6 +7,7 @@ entrant, jusqu’à la nième, ou jusqu’au premier pointeur NULL présent. Le
 tableau sortant devra se terminer par un pointeur NULL.
 */
 /*
+EXPLICATION DU SUJET TRES OBSCURE 
 Objectif de la fonction array_clone
 Tu dois créer une fonction qui prend deux paramètres :
 
@@ -26,14 +27,17 @@ Créer un nouveau tableau, qui contient ces copies, et qui se termine lui aussi 
 Pourquoi ce n’est pas juste une copie simple ?
 Parce que tu dois dupliquer les chaînes – c’est-à-dire allouer un nouvel espace mémoire pour chaque chaîne copiée. On ne veut pas juste copier les pointeurs (sinon les deux tableaux pointent vers les mêmes chaînes), on veut de véritables clones indépendants.
 
-En résumé
-Tu crées un nouveau tableau contenant :
+Pour résumer : 
+On crée un nouveau tableau contenant :
 
 Jusqu’à n copies de chaînes depuis un tableau donné.
 
-Ou tu t’arrêtes plus tôt si tu rencontres un NULL.
+Ou on s'arrête plus tôt si tu rencontres un NULL.
 
-Et tu ajoutes un NULL à la fin du nouveau tableau pour marquer la fin.
+Et on ajoute un NULL à la fin du nouveau tableau pour marquer la fin.
+
+On prie pour que j'ai compris !!! :)
+
 
 */
 //TODO implentation tableau array vide avec NULL à la fin avec une boucle
