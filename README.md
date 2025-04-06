@@ -1,13 +1,13 @@
 # RUN TRACK C
 
-Description courte de ton projet.
+![preview main](c_readme.png)
+
+TODO : RunTrack openClassroom et LaPlateforme
 
 ## Table des matières
 
 - [Installation](#installation)
 - [Utilisation](#utilisation)
-- [Contribuer](#contribuer)
-- [Licence](#licence)
 
 ## Installation
 
@@ -45,3 +45,7 @@ Taper cela dans le terminal
 [Console]::OutputEncoding
 
 ```
+
+## Contributeur
+
+- [Florence Navet](https://github.com/florence-navet)
