@@ -7,7 +7,7 @@ entrant, jusqu’à la nième, ou jusqu’au premier pointeur NULL présent. Le
 tableau sortant devra se terminer par un pointeur NULL.
 */
 /*
- Objectif de la fonction array_clone
+Objectif de la fonction array_clone
 Tu dois créer une fonction qui prend deux paramètres :
 
 Un tableau de chaînes de caractères (char *[]) – autrement dit, un tableau de char*, où chaque élément pointe vers une chaîne comme "bonjour" ou "test".
@@ -36,37 +36,55 @@ Ou tu t’arrêtes plus tôt si tu rencontres un NULL.
 Et tu ajoutes un NULL à la fin du nouveau tableau pour marquer la fin.
 
 */
+//TODO implentation tableau array vide avec NULL à la fin avec une boucle
+// incrementation tableau pour exemple
+//char *tableau_initial[] = ["Salut", "je", "m'appelle", "Kévin", "et", "je", "suis", "d'Aix", NULL];
 
+
+/*
+array_clone.c
+*/
+
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdio.h>
 
-//TODO faire un une fct qui renvoit une liste de caractere
+
+//fonction pour afficher tableau de chaine de caractere
+void afficher_tableau(char **tableau) {
+    int i = 0;
+    while(tableau[i] != NULL){
+        printf("Mot %d : %s\n", i, tableau[i]);
+        i++;
+    }
+} 
 
 char **array_clone(char **array, int nombre) {
-    // n+1 pour le NULL final
-    char **nouveau_tableau = (char **)malloc((nombre + 1) * sizeof(char *));
+    if (array == NULL) {
+        return NULL;
+    }
 
+    char **nouveau_tableau = malloc((nombre + 1) * sizeof(char *));
     if (nouveau_tableau == NULL) {
         return NULL;
     }
 
-    int i = 0;
-    while (i < nombre && array[i] != NULL) {
-        nouveau_tableau[i] = strdup(array[i]); // alloue et copie la chaîne
+    int i;
+    for (i = 0; i < nombre; i++) {
+        if (array[i] == NULL) {
+            break;
+        }
+        nouveau_tableau[i] = strdup(array[i]);
         if (nouveau_tableau[i] == NULL) {
-            // Libération de la mémoire si l'allocation échoue
+            // Libération de la mémoire en cas d'échec
             for (int j = 0; j < i; j++) {
                 free(nouveau_tableau[j]);
             }
             free(nouveau_tableau);
             return NULL;
         }
-        i++;
     }
 
-    // Terminer le tableau par NULL
     nouveau_tableau[i] = NULL;
-
     return nouveau_tableau;
 }

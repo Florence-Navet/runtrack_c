@@ -1,0 +1,36 @@
+# RUN TRACK C
+
+Description courte de ton projet.
+
+## Table des matières
+
+- [Installation](#installation)
+- [Utilisation](#utilisation)
+- [Contribuer](#contribuer)
+- [Licence](#licence)
+
+## Installation
+
+1. Installation - TDM-GCC
+
+```bash
+https://jmeubank.github.io/tdm-gcc/
+```
+
+A installer sur son pc
+
+2. Changer paramètre systeme :  
+   Allez dans Paramètres > Mise à jour et securité > Paramètres de protection de virus et menaces > Gerer les paramètres > Exclusion > ajouter > Faites oui > et ajouter le dossier C de votre projet  
+   **Evite que le parafeu ne se déclenche à chaque nouveau projet**
+
+```bash
+gcc test.c -o coco
+```
+
+## verification encodage UTF8
+
+**pour mettre encodage UTF8**  
+ $OutputEncoding = [System.Text.Encoding]::UTF8
+
+**pour le vérifier**  
+[Console]::OutputEncoding
