@@ -29,8 +29,19 @@ gcc test.c -o coco
 
 ## verification encodage UTF8
 
-**pour mettre encodage UTF8**  
+**pour mettre encodage UTF8**
+
+Taper cela dans le terminal
+
+```bash
+
  $OutputEncoding = [System.Text.Encoding]::UTF8
 
-**pour le vérifier**  
+```
+
+**pour le vérifier**
+
+```bash
 [Console]::OutputEncoding
+
+```
