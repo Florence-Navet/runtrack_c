@@ -2,7 +2,7 @@
 
 ![preview main](c_readme.png)
 
-TODO : RunTrack openClassroom et LaPlateforme
+RunTrack openClassroom et LaPlateforme
 
 ## Table des matières
 
