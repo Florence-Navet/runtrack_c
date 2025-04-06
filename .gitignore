@@ -55,6 +55,9 @@ dkms.conf
 *toto.c
 *test.c
 
+#pour push un makefile
+!Makefile
+
 
 
 
