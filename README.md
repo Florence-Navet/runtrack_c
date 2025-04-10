@@ -24,7 +24,7 @@ A installer sur son pc
    **Evite que le parafeu ne se déclenche à chaque nouveau projet**
 
 ```bash
-gcc test.c -o coco
+gcc tenom_du_fichier.c -o mettreunnom
 ```
 
 3. Création d'un Makefile
