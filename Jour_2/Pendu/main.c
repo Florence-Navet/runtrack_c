@@ -1,3 +1,7 @@
+/*
+main.c
+*/
+
 #include <stdio.h>
 #include <stdlib.h>  // Pour malloc et free
 #include <ctype.h>

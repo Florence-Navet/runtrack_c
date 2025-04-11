@@ -1,8 +1,10 @@
+
+/*
+utils.c*/
+
 #include <stdio.h>  // pour getchar()
 #include <ctype.h>  // pour toupper()
 #include "utils.h"
-
-
 
 // Fonction qui retourne la taille du mot
 int tailleMot(char motSecret[]) {
@@ -20,9 +22,9 @@ void initTableau(int *lettreTrouvee, int taille) {
     }
 }
 
-//determine si le joueur a gagné
+// Détermine si le joueur a gagné
 int gagne(int *lettreTrouvee, int nombreLettres){
-    for (int i=0; i < nombreLettres; i++) {
+    for (int i = 0; i < nombreLettres; i++) {
         if(lettreTrouvee[i] == 0) {
             return 0;
         }
@@ -30,23 +32,23 @@ int gagne(int *lettreTrouvee, int nombreLettres){
     return 1;
 }
 
-// fct pour lire un caractere et le mettre en majuscule
+// Fonction pour lire un caractère et le mettre en majuscule
 char lireCaractere()
 {
-
     char caractere = getchar();               // On lit le premier caractère
-    caractere = toupper(caractere);      // On met la lettre en majuscule si besoin
+    caractere = toupper(caractere);           // On met la lettre en majuscule si besoin
 
-    while (getchar() != '\n');           // On vide le buffer
+    while (getchar() != '\n');                // On vide le buffer
 
     return caractere;
 }
 
-int rechercheLettre(char lettre, char *motSecret, int *LettreTrouvee) {
+// Recherche la lettre dans le mot secret et met à jour le tableau lettreTrouvee
+int rechercheLettre(char lettre, char *motSecret, int *lettreTrouvee) {
     int trouve = 0;
     for (int i = 0; motSecret[i] != '\0'; i++) {
-        if(motSecret[i] == lettre && LettreTrouvee [i == 0]) {
-            LettreTrouvee[i] = 1;
+        if(motSecret[i] == lettre && lettreTrouvee[i] == 0) {
+            lettreTrouvee[i] = 1;
             trouve = 1;
         }
     }
