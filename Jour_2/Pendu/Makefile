@@ -7,7 +7,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -std=c11
 
 # Les fichiers sources
-SRC = main.c  main.h utils.h
+SRC = main.c main.h utils.c utils.h
 
 # Les fichiers objets générés à partir des sources
 OBJ = $(SRC:.c=.o)

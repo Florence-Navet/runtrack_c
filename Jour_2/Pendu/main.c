@@ -10,9 +10,9 @@ int main(int argc, char* argv[])
 {
     (void)argc;
     (void)argv;   
-//     char lettre = 0;  // Stocke la lettre proposée par l'utilisateur (retour du scanf)
+    char lettre = 0;  // Stocke la lettre proposée par l'utilisateur (retour du scanf)
     char motSecret[] = "ROUGE";  // C'est le mot à trouver
-//     int coupsRestants = 10;  // Compteur de coups restants (0 = mort)
+    int coupsRestants = 10;  // Compteur de coups restants (0 = mort)
     
     // Calcul de la taille du mot
     int taille = tailleMot(motSecret);
@@ -23,12 +23,35 @@ int main(int argc, char* argv[])
     // Initialisation du tableau lettreTrouvee à 0 (aucune lettre trouvée au départ)
     initTableau(lettreTrouvee, taille);
     
-    // Affichage des valeurs dans lettreTrouvee pour vérifier que c'est bien initialisé
+    // Affichage des valeurs dans lettreTrouvee pour vérifier que c'est bien initialisé 
     printf("Tableau des lettres trouvées : ");
     for (int i = 0; i < taille; i++) {
-        printf("%d ", lettreTrouvee[i]);
+        printf("%c ", lettreTrouvee[i]);
     }
     printf("\n");
+
+    while (coupsRestants > 0 && !gagne(lettreTrouvee, taille)) {
+        printf("Propose une lettre :");
+        lettre = lireCaractere();
+
+        if(!rechercheLettre(lettre, motSecret, lettreTrouvee)) {
+            coupsRestants--;
+            printf("Mauvaise lettre ! Il vous reste %d. \n", coupsRestants);
+        
+        } else {
+            printf("Bonne lettre !! \n");
+        }
+
+        printf("Mot à deviner : ");
+        for(int i = 0; i < taille; i++) {
+            if(lettreTrouvee[i]) {
+                printf("%c", motSecret[i]);
+            } else {
+                printf("_ ");
+            }
+        }
+        printf("\n");
+    }
 
     //appel fct gagné
     if (gagne(lettreTrouvee, taille))
@@ -36,7 +59,7 @@ int main(int argc, char* argv[])
         printf("Félicitation ! Vous avez trouvé le mot secret !!\n");
     }else
     {
-        printf("Il vous reste encore des lettres. Poursuivez ! \n");
+        printf(" Dommage vous avez perdu. Le mot était : %s ! \n", motSecret);
     }
     
 
