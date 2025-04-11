@@ -36,7 +36,7 @@ int main(int argc, char* argv[])
         printf("Félicitation ! Vous avez trouvé le mot secret !!\n");
     }else
     {
-        printf("Il vous reste encore des lettres. Poursuivez ! \n")
+        printf("Il vous reste encore des lettres. Poursuivez ! \n");
     }
     
 
