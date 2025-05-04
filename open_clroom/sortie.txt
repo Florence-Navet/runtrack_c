@@ -1,4 +1,6 @@
-Bonjour ma chouquette !
- On va bientôt gouter !
-Je suis prête pour redémarrer une nouvelle leçon
- Recommençon du début !
+Dossier open_clroom/
+main.c : - short et long commentaire
+         - print en console
+
+===================
+
